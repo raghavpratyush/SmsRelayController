@@ -1,0 +1,5 @@
+---- LED_DBG Matches (4 in 3 files) ----
+Global.h (include):#define LED_DBG	PORTB
+Main.c:		LED_DBG ^= LED_ON;
+Uart.c (board\uart):	//LED_DBG = LED_ON;
+Uart.c (board\uart):		LED_DBG ^= LED_ON;

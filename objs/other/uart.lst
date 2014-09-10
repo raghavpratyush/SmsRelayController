@@ -1,0 +1,379 @@
+GAS LISTING C:\Users\RAGHAV~1\AppData\Local\Temp/ccyHzfi9.s 			page 1
+
+
+   1               		.file	"uart.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.text
+   9               	.global	UartRxEnable
+  10               		.type	UartRxEnable, @function
+  11               	UartRxEnable:
+  12               	/* prologue: function */
+  13               	/* frame size = 0 */
+  14 0000 FC01      		movw r30,r24
+  15 0002 0097      		sbiw r24,0
+  16 0004 01F0      		breq .L6
+  17               	/* #APP */
+  18               	 ;  61 "Board/Uart/uart.c" 1
+  19 0006 F894      		cli
+  20               	 ;  0 "" 2
+  21               	/* #NOAPP */
+  22 0008 81E0      		ldi r24,lo8(1)
+  23 000a 8093 0000 		sts UartStruct+16,r24
+  24 000e 1092 0000 		sts UartStruct+11,__zero_reg__
+  25 0012 F093 0000 		sts (UartStruct+8)+1,r31
+  26 0016 E093 0000 		sts UartStruct+8,r30
+  27 001a 6093 0000 		sts UartStruct+10,r22
+  28 001e 5093 0000 		sts (UartStruct+12)+1,r21
+  29 0022 4093 0000 		sts UartStruct+12,r20
+  30 0026 3093 0000 		sts (UartStruct+14)+1,r19
+  31 002a 2093 0000 		sts UartStruct+14,r18
+  32               	/* #APP */
+  33               	 ;  68 "Board/Uart/uart.c" 1
+  34 002e 7894      		sei
+  35               	 ;  0 "" 2
+  36               	/* #NOAPP */
+  37 0030 0895      		ret
+  38               	.L6:
+  39 0032 80E0      		ldi r24,lo8(0)
+  40 0034 0895      		ret
+  41               		.size	UartRxEnable, .-UartRxEnable
+  42               	.global	UartRxDisable
+  43               		.type	UartRxDisable, @function
+  44               	UartRxDisable:
+  45               	/* prologue: function */
+  46               	/* frame size = 0 */
+  47               	/* #APP */
+  48               	 ;  74 "Board/Uart/uart.c" 1
+  49 0036 F894      		cli
+  50               	 ;  0 "" 2
+  51               	/* #NOAPP */
+  52 0038 1092 0000 		sts UartStruct+16,__zero_reg__
+  53 003c 1092 0000 		sts UartStruct+11,__zero_reg__
+  54 0040 1092 0000 		sts (UartStruct+12)+1,__zero_reg__
+  55 0044 1092 0000 		sts UartStruct+12,__zero_reg__
+  56 0048 1092 0000 		sts (UartStruct+14)+1,__zero_reg__
+  57 004c 1092 0000 		sts UartStruct+14,__zero_reg__
+GAS LISTING C:\Users\RAGHAV~1\AppData\Local\Temp/ccyHzfi9.s 			page 2
+
+
+  58 0050 1092 0000 		sts (UartStruct+8)+1,__zero_reg__
+  59 0054 1092 0000 		sts UartStruct+8,__zero_reg__
+  60               	/* #APP */
+  61               	 ;  80 "Board/Uart/uart.c" 1
+  62 0058 7894      		sei
+  63               	 ;  0 "" 2
+  64               	/* #NOAPP */
+  65 005a 81E0      		ldi r24,lo8(1)
+  66               	/* epilogue start */
+  67 005c 0895      		ret
+  68               		.size	UartRxDisable, .-UartRxDisable
+  69               	.global	__vector_13
+  70               		.type	__vector_13, @function
+  71               	__vector_13:
+  72 005e 1F92      		push __zero_reg__
+  73 0060 0F92      		push r0
+  74 0062 0FB6      		in r0,__SREG__
+  75 0064 0F92      		push r0
+  76 0066 1124      		clr __zero_reg__
+  77 0068 2F93      		push r18
+  78 006a 3F93      		push r19
+  79 006c 4F93      		push r20
+  80 006e 5F93      		push r21
+  81 0070 6F93      		push r22
+  82 0072 7F93      		push r23
+  83 0074 8F93      		push r24
+  84 0076 9F93      		push r25
+  85 0078 AF93      		push r26
+  86 007a BF93      		push r27
+  87 007c EF93      		push r30
+  88 007e FF93      		push r31
+  89               	/* prologue: Signal */
+  90               	/* frame size = 0 */
+  91 0080 2CB1      		in r18,44-32
+  92 0082 8091 0000 		lds r24,UartStruct+16
+  93 0086 8130      		cpi r24,lo8(1)
+  94 0088 01F0      		breq .L14
+  95               	.L13:
+  96               	/* epilogue start */
+  97 008a FF91      		pop r31
+  98 008c EF91      		pop r30
+  99 008e BF91      		pop r27
+ 100 0090 AF91      		pop r26
+ 101 0092 9F91      		pop r25
+ 102 0094 8F91      		pop r24
+ 103 0096 7F91      		pop r23
+ 104 0098 6F91      		pop r22
+ 105 009a 5F91      		pop r21
+ 106 009c 4F91      		pop r20
+ 107 009e 3F91      		pop r19
+ 108 00a0 2F91      		pop r18
+ 109 00a2 0F90      		pop r0
+ 110 00a4 0FBE      		out __SREG__,r0
+ 111 00a6 0F90      		pop r0
+ 112 00a8 1F90      		pop __zero_reg__
+ 113 00aa 1895      		reti
+ 114               	.L14:
+GAS LISTING C:\Users\RAGHAV~1\AppData\Local\Temp/ccyHzfi9.s 			page 3
+
+
+ 115 00ac E091 0000 		lds r30,UartStruct+8
+ 116 00b0 F091 0000 		lds r31,(UartStruct+8)+1
+ 117 00b4 3097      		sbiw r30,0
+ 118 00b6 01F0      		breq .L11
+ 119 00b8 9091 0000 		lds r25,UartStruct+10
+ 120 00bc 9923      		tst r25
+ 121 00be 01F4      		brne .L15
+ 122               	.L11:
+ 123 00c0 E091 0000 		lds r30,UartStruct+12
+ 124 00c4 F091 0000 		lds r31,(UartStruct+12)+1
+ 125 00c8 3097      		sbiw r30,0
+ 126 00ca 01F0      		breq .L13
+ 127 00cc 2091 0000 		lds r18,UartStruct+14
+ 128 00d0 3091 0000 		lds r19,(UartStruct+14)+1
+ 129 00d4 6091 0000 		lds r22,UartStruct+11
+ 130 00d8 40E0      		ldi r20,lo8(0)
+ 131 00da 8091 0000 		lds r24,UartStruct+10
+ 132 00de 8823      		tst r24
+ 133 00e0 01F0      		breq .L16
+ 134 00e2 C901      		movw r24,r18
+ 135 00e4 70E0      		ldi r23,lo8(0)
+ 136 00e6 0995      		icall
+ 137 00e8 00C0      		rjmp .L13
+ 138               	.L15:
+ 139 00ea 8091 0000 		lds r24,UartStruct+11
+ 140 00ee E80F      		add r30,r24
+ 141 00f0 F11D      		adc r31,__zero_reg__
+ 142 00f2 2083      		st Z,r18
+ 143 00f4 8F5F      		subi r24,lo8(-(1))
+ 144 00f6 8093 0000 		sts UartStruct+11,r24
+ 145 00fa 9150      		subi r25,lo8(-(-1))
+ 146 00fc 9093 0000 		sts UartStruct+10,r25
+ 147 0100 00C0      		rjmp .L11
+ 148               	.L16:
+ 149 0102 41E0      		ldi r20,lo8(1)
+ 150 0104 C901      		movw r24,r18
+ 151 0106 70E0      		ldi r23,lo8(0)
+ 152 0108 0995      		icall
+ 153 010a 00C0      		rjmp .L13
+ 154               		.size	__vector_13, .-__vector_13
+ 155               	.global	__vector_15
+ 156               		.type	__vector_15, @function
+ 157               	__vector_15:
+ 158 010c 1F92      		push __zero_reg__
+ 159 010e 0F92      		push r0
+ 160 0110 0FB6      		in r0,__SREG__
+ 161 0112 0F92      		push r0
+ 162 0114 1124      		clr __zero_reg__
+ 163 0116 2F93      		push r18
+ 164 0118 3F93      		push r19
+ 165 011a 4F93      		push r20
+ 166 011c 5F93      		push r21
+ 167 011e 6F93      		push r22
+ 168 0120 7F93      		push r23
+ 169 0122 8F93      		push r24
+ 170 0124 9F93      		push r25
+ 171 0126 AF93      		push r26
+GAS LISTING C:\Users\RAGHAV~1\AppData\Local\Temp/ccyHzfi9.s 			page 4
+
+
+ 172 0128 BF93      		push r27
+ 173 012a EF93      		push r30
+ 174 012c FF93      		push r31
+ 175               	/* prologue: Signal */
+ 176               	/* frame size = 0 */
+ 177 012e E091 0000 		lds r30,UartStruct
+ 178 0132 F091 0000 		lds r31,(UartStruct)+1
+ 179 0136 8081      		ld r24,Z
+ 180 0138 8823      		tst r24
+ 181 013a 01F4      		brne .L22
+ 182 013c E091 0000 		lds r30,UartStruct+2
+ 183 0140 F091 0000 		lds r31,(UartStruct+2)+1
+ 184 0144 3097      		sbiw r30,0
+ 185 0146 01F0      		breq .L20
+ 186 0148 8091 0000 		lds r24,UartStruct+4
+ 187 014c 9091 0000 		lds r25,(UartStruct+4)+1
+ 188 0150 0995      		icall
+ 189               	.L20:
+ 190 0152 8091 0000 		lds r24,UartStruct+6
+ 191 0156 9091 0000 		lds r25,(UartStruct+6)+1
+ 192 015a 0E94 0000 		call OSSemPost
+ 193               	.L21:
+ 194               	/* epilogue start */
+ 195 015e FF91      		pop r31
+ 196 0160 EF91      		pop r30
+ 197 0162 BF91      		pop r27
+ 198 0164 AF91      		pop r26
+ 199 0166 9F91      		pop r25
+ 200 0168 8F91      		pop r24
+ 201 016a 7F91      		pop r23
+ 202 016c 6F91      		pop r22
+ 203 016e 5F91      		pop r21
+ 204 0170 4F91      		pop r20
+ 205 0172 3F91      		pop r19
+ 206 0174 2F91      		pop r18
+ 207 0176 0F90      		pop r0
+ 208 0178 0FBE      		out __SREG__,r0
+ 209 017a 0F90      		pop r0
+ 210 017c 1F90      		pop __zero_reg__
+ 211 017e 1895      		reti
+ 212               	.L22:
+ 213 0180 8CB9      		out 44-32,r24
+ 214 0182 3196      		adiw r30,1
+ 215 0184 F093 0000 		sts (UartStruct)+1,r31
+ 216 0188 E093 0000 		sts UartStruct,r30
+ 217 018c 00C0      		rjmp .L21
+ 218               		.size	__vector_15, .-__vector_15
+ 219               	.global	UartSendData
+ 220               		.type	UartSendData, @function
+ 221               	UartSendData:
+ 222 018e CF92      		push r12
+ 223 0190 DF92      		push r13
+ 224 0192 EF92      		push r14
+ 225 0194 FF92      		push r15
+ 226 0196 0F93      		push r16
+ 227 0198 1F93      		push r17
+ 228 019a DF93      		push r29
+GAS LISTING C:\Users\RAGHAV~1\AppData\Local\Temp/ccyHzfi9.s 			page 5
+
+
+ 229 019c CF93      		push r28
+ 230 019e 0F92      		push __tmp_reg__
+ 231 01a0 CDB7      		in r28,__SP_L__
+ 232 01a2 DEB7      		in r29,__SP_H__
+ 233               	/* prologue: function */
+ 234               	/* frame size = 1 */
+ 235 01a4 D82E      		mov r13,r24
+ 236 01a6 C92E      		mov r12,r25
+ 237 01a8 8B01      		movw r16,r22
+ 238 01aa 7A01      		movw r14,r20
+ 239 01ac 2130      		cpi r18,lo8(1)
+ 240 01ae 01F0      		breq .L28
+ 241 01b0 8091 0000 		lds r24,UartStruct+6
+ 242 01b4 9091 0000 		lds r25,(UartStruct+6)+1
+ 243 01b8 0E94 0000 		call OSSemAccept
+ 244 01bc 892B      		or r24,r25
+ 245 01be 01F0      		breq .L29
+ 246               	.L25:
+ 247 01c0 1093 0000 		sts (UartStruct+2)+1,r17
+ 248 01c4 0093 0000 		sts UartStruct+2,r16
+ 249 01c8 F092 0000 		sts (UartStruct+4)+1,r15
+ 250 01cc E092 0000 		sts UartStruct+4,r14
+ 251 01d0 ED2D      		mov r30,r13
+ 252 01d2 FC2D      		mov r31,r12
+ 253 01d4 8191      		ld r24,Z+
+ 254 01d6 8CB9      		out 44-32,r24
+ 255 01d8 F093 0000 		sts (UartStruct)+1,r31
+ 256 01dc E093 0000 		sts UartStruct,r30
+ 257 01e0 81E0      		ldi r24,lo8(1)
+ 258               	.L26:
+ 259               	/* epilogue start */
+ 260 01e2 0F90      		pop __tmp_reg__
+ 261 01e4 CF91      		pop r28
+ 262 01e6 DF91      		pop r29
+ 263 01e8 1F91      		pop r17
+ 264 01ea 0F91      		pop r16
+ 265 01ec FF90      		pop r15
+ 266 01ee EF90      		pop r14
+ 267 01f0 DF90      		pop r13
+ 268 01f2 CF90      		pop r12
+ 269 01f4 0895      		ret
+ 270               	.L29:
+ 271 01f6 80E0      		ldi r24,lo8(0)
+ 272 01f8 00C0      		rjmp .L26
+ 273               	.L28:
+ 274 01fa 8091 0000 		lds r24,UartStruct+6
+ 275 01fe 9091 0000 		lds r25,(UartStruct+6)+1
+ 276 0202 60E0      		ldi r22,lo8(0)
+ 277 0204 70E0      		ldi r23,hi8(0)
+ 278 0206 AE01      		movw r20,r28
+ 279 0208 4F5F      		subi r20,lo8(-(1))
+ 280 020a 5F4F      		sbci r21,hi8(-(1))
+ 281 020c 0E94 0000 		call OSSemPend
+ 282 0210 00C0      		rjmp .L25
+ 283               		.size	UartSendData, .-UartSendData
+ 284               	.global	UartInit
+ 285               		.type	UartInit, @function
+GAS LISTING C:\Users\RAGHAV~1\AppData\Local\Temp/ccyHzfi9.s 			page 6
+
+
+ 286               	UartInit:
+ 287 0212 DF92      		push r13
+ 288 0214 EF92      		push r14
+ 289 0216 FF92      		push r15
+ 290 0218 0F93      		push r16
+ 291 021a 1F93      		push r17
+ 292               	/* prologue: function */
+ 293               	/* frame size = 0 */
+ 294 021c D82E      		mov r13,r24
+ 295 021e E92E      		mov r14,r25
+ 296 0220 162F      		mov r17,r22
+ 297 0222 042F      		mov r16,r20
+ 298 0224 F22E      		mov r15,r18
+ 299 0226 81E0      		ldi r24,lo8(1)
+ 300 0228 90E0      		ldi r25,hi8(1)
+ 301 022a 0E94 0000 		call OSSemCreate
+ 302 022e 9093 0000 		sts (UartStruct+6)+1,r25
+ 303 0232 8093 0000 		sts UartStruct+6,r24
+ 304 0236 1092 0000 		sts UartStruct+16,__zero_reg__
+ 305 023a E0BC      		out 64-32,r14
+ 306 023c D9B8      		out 41-32,r13
+ 307 023e 88ED      		ldi r24,lo8(-40)
+ 308 0240 8AB9      		out 42-32,r24
+ 309 0242 110F      		lsl r17
+ 310 0244 1068      		ori r17,lo8(-128)
+ 311 0246 0295      		swap r16
+ 312 0248 007F      		andi r16,lo8(-16)
+ 313 024a 012B      		or r16,r17
+ 314 024c FF0C      		lsl r15
+ 315 024e FF0C      		lsl r15
+ 316 0250 FF0C      		lsl r15
+ 317 0252 F02A      		or r15,r16
+ 318 0254 F0BC      		out 64-32,r15
+ 319               	/* epilogue start */
+ 320 0256 1F91      		pop r17
+ 321 0258 0F91      		pop r16
+ 322 025a FF90      		pop r15
+ 323 025c EF90      		pop r14
+ 324 025e DF90      		pop r13
+ 325 0260 0895      		ret
+ 326               		.size	UartInit, .-UartInit
+ 327               	.global	test
+ 328               	.global	test
+ 329               		.section .bss
+ 330               		.type	test, @object
+ 331               		.size	test, 1
+ 332               	test:
+ 333 0000 00        		.skip 1,0
+ 334               		.lcomm UartStruct,17
+ 335               	.global __do_clear_bss
+GAS LISTING C:\Users\RAGHAV~1\AppData\Local\Temp/ccyHzfi9.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 uart.c
+C:\Users\RAGHAV~1\AppData\Local\Temp/ccyHzfi9.s:2      *ABS*:0000003f __SREG__
+C:\Users\RAGHAV~1\AppData\Local\Temp/ccyHzfi9.s:3      *ABS*:0000003e __SP_H__
+C:\Users\RAGHAV~1\AppData\Local\Temp/ccyHzfi9.s:4      *ABS*:0000003d __SP_L__
+C:\Users\RAGHAV~1\AppData\Local\Temp/ccyHzfi9.s:5      *ABS*:00000034 __CCP__
+C:\Users\RAGHAV~1\AppData\Local\Temp/ccyHzfi9.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\RAGHAV~1\AppData\Local\Temp/ccyHzfi9.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\RAGHAV~1\AppData\Local\Temp/ccyHzfi9.s:11     .text:00000000 UartRxEnable
+                             .bss:00000001 UartStruct
+C:\Users\RAGHAV~1\AppData\Local\Temp/ccyHzfi9.s:44     .text:00000036 UartRxDisable
+C:\Users\RAGHAV~1\AppData\Local\Temp/ccyHzfi9.s:71     .text:0000005e __vector_13
+C:\Users\RAGHAV~1\AppData\Local\Temp/ccyHzfi9.s:157    .text:0000010c __vector_15
+C:\Users\RAGHAV~1\AppData\Local\Temp/ccyHzfi9.s:221    .text:0000018e UartSendData
+C:\Users\RAGHAV~1\AppData\Local\Temp/ccyHzfi9.s:286    .text:00000212 UartInit
+C:\Users\RAGHAV~1\AppData\Local\Temp/ccyHzfi9.s:332    .bss:00000000 test
+
+UNDEFINED SYMBOLS
+OSSemPost
+OSSemAccept
+OSSemPend
+OSSemCreate
+__do_clear_bss

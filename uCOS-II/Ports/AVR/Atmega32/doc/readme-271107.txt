@@ -1,0 +1,12 @@
+readme-271107.txt
+-----------------
+
+This is strictly a bug fix release of version 1 of the AVR port. The
+following bugs are corrected compared to version 141003
+
+- avr_isr.h: r1 is cleared so that flags are not affected (Bug #1)
+- os_cpu_a.asm: OSTickISR clears R1 before calling a C made function
+- OSTimeTick (Bug #2)
+
+Julius Luukko
+Novermber, 27th, 2007
